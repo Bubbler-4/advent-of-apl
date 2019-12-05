@@ -1,0 +1,7 @@
+ P2S←{
+     ⍝ For each line, split at 'x' and extract numbers
+     s←{t←⍵ ⋄ ((t='x')/t)←' ' ⋄ ⍎t}¨⍵
+     ⍝ For each triple, compute three pairwise products A B C, and
+     ⍝ compute 2×(A+B+C)+min(A,B,C), then sum of all
+     +/{p←2×/4⍴⍵ ⋄ (⌊/p)+2×+/p}¨s
+ }

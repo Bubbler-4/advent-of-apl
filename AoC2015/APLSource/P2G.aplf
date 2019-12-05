@@ -1,0 +1,6 @@
+ P2G←{
+     ⍝ For each line, split at 'x' and extract numbers
+     s←{t←⍵ ⋄ ((t='x')/t)←' ' ⋄ ⍎t}¨⍵
+     ⍝ For each triple, compute 2×(A+B+C - max(A,B,C)) + A×B×C
+     +/{(×/⍵)+2×(+/⍵)-⌈/⍵}¨s
+ }

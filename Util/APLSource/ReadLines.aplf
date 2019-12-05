@@ -1,0 +1,3 @@
+ ReadLines←{
+     ⊃⎕NGET ⍵ 1
+ }
