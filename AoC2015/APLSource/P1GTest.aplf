@@ -1,0 +1,9 @@
+ r←P1GTest
+ ⍝ Basic tests
+ Assert←#.U.Assert
+ Assert 1≡P1G,')'
+ Assert 5≡P1G'()())'
+ ⎕←'All tests passed'
+ ⍝ Main test
+ in←#.U.ReadFile'input/2015/1.txt'
+ r←P1G in
