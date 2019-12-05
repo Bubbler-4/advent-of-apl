@@ -13,6 +13,7 @@ Each solution will be fully annotated with comments.
 
 You can try out the solutions without installing Dyalog APL, by [opening this repo on Gitpod](https://gitpod.io/#https://github.com/Bubbler-4/advent-of-apl).
 If you want detailed instructions on how to use it (or use it better), please open an issue.
+Also, any suggestions to improve the solutions (regarding performance, style, whatever) are welcome.
 
 ## Current progress
 
