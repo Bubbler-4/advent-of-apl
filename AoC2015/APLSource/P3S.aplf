@@ -1,0 +1,5 @@
+ P3S←{
+     ⍝ 1-based index in '^<v>' of each char, power of 0j1 to represent directions,
+     ⍝ cumulative sum from zero and count unique elements.
+     ≢∪+\0,0J1*'^<v>'⍳⍵
+ }

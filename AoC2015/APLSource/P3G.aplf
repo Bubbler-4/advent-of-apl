@@ -1,0 +1,5 @@
+ P3G←{
+     ⍝ Reshape into two columns, do the same as Silver in column direction,
+     ⍝ flatten and count unique elements
+     ≢∪,+⍀0⍪0J1*'^<v>'⍳(0.5×≢⍵)2⍴⍵
+ }
