@@ -17,13 +17,19 @@ Also, any suggestions to improve the solutions (regarding performance, style, wh
 
 ## Current progress
 
+### AoC 2015
+
+* Day 4 requires an MD5 function implementation.
+
 | AoC 2015  | 1 | 2 | 3 | 4 | 5 |
 | :---:     |:-:|:-:|:-:|:-:|:-:|
-| **01~05** | [☆](AoC2015/APLSource/P1S.aplf) [★](AoC2015/APLSource/P1G.aplf) | [☆](AoC2015/APLSource/P2S.aplf) [★](AoC2015/APLSource/P2G.aplf) | [☆](AoC2015/APLSource/P3S.aplf) [★](AoC2015/APLSource/P3G.aplf) |   |   |
+| **01~05** | [☆](AoC2015/APLSource/P1S.aplf) [★](AoC2015/APLSource/P1G.aplf) | [☆](AoC2015/APLSource/P2S.aplf) [★](AoC2015/APLSource/P2G.aplf) | [☆](AoC2015/APLSource/P3S.aplf) [★](AoC2015/APLSource/P3G.aplf) | Skip | [☆](AoC2015/APLSource/P5S.aplf) [★](AoC2015/APLSource/P5G.aplf) |
 | **06~10** |   |   |   |   |   |
 | **11~15** |   |   |   |   |   |
 | **16~20** |   |   |   |   |   |
 | **21~25** |   |   |   |   |   |
+
+### AoC 2016
 
 | AoC 2016  | 1 | 2 | 3 | 4 | 5 |
 | :---:     |:-:|:-:|:-:|:-:|:-:|
@@ -33,6 +39,8 @@ Also, any suggestions to improve the solutions (regarding performance, style, wh
 | **16~20** |   |   |   |   |   |
 | **21~25** |   |   |   |   |   |
 
+### AoC 2017
+
 | AoC 2017  | 1 | 2 | 3 | 4 | 5 |
 | :---:     |:-:|:-:|:-:|:-:|:-:|
 | **01~05** |   |   |   |   |   |
@@ -41,6 +49,8 @@ Also, any suggestions to improve the solutions (regarding performance, style, wh
 | **16~20** |   |   |   |   |   |
 | **21~25** |   |   |   |   |   |
 
+### AoC 2018
+
 | AoC 2018  | 1 | 2 | 3 | 4 | 5 |
 | :---:     |:-:|:-:|:-:|:-:|:-:|
 | **01~05** |   |   |   |   |   |
@@ -48,6 +58,8 @@ Also, any suggestions to improve the solutions (regarding performance, style, wh
 | **11~15** |   |   |   |   |   |
 | **16~20** |   |   |   |   |   |
 | **21~25** |   |   |   |   |   |
+
+### AoC 2019
 
 | AoC 2019  | 1 | 2 | 3 | 4 | 5 |
 | :---:     |:-:|:-:|:-:|:-:|:-:|

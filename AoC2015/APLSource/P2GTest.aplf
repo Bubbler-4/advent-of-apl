@@ -1,9 +1,9 @@
  r←P2GTest
  ⍝ Basic tests
  Assert←#.U.Assert
- Assert 34≡P2G⊂'2x3x4'
- Assert 14≡P2G⊂'1x1x10'
+ Assert 34≡P2G'2x3x4'
+ Assert 14≡P2G'1x1x10'
  ⎕←'All tests passed'
  ⍝ Main test
  in←#.U.ReadLines'input/2015/2.txt'
- r←P2G in
+ r←+/P2G¨in
