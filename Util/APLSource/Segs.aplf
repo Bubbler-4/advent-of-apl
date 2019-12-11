@@ -1,0 +1,4 @@
+ Segs←{
+    ⍝ Copied from dfns.segs
+     (~⍵∊⍺)⊆⍵    ⍝ ⍺-separated segments of vector ⍵.
+ }

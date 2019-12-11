@@ -1,0 +1,13 @@
+ Words←{
+     ⍝ Copied from dfns.words
+     ⎕IO←0
+     alph←{(0≤⎕NC⍪⍵)/⍵}⎕AV~'⍺⍵∇' ⍝ primary alphabet: initial letters for names
+     supp←⎕D                     ⍝ supplementary: 0-9.
+     ⍺←alph supp                 ⍝ default left argument.
+     1=≡,⍺:⍺''∇ ⍵                ⍝ supplied argument simple: append null.
+     alph supp←⍺                 ⍝ supplied left argument overrides default.
+     fm←0 1⍷0,⍵∊alph             ⍝ Start of words
+     nw←1 0⍷0,⍵∊alph,supp        ⍝ Start of non-words
+     to←∊<\¨(1++\fm)⊆nw          ⍝ End of words.
+     (1++\¯1↓fm∨to)⊆⍵            ⍝ Split words.
+ }
