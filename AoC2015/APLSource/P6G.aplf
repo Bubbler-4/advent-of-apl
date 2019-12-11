@@ -1,0 +1,14 @@
+ P6G←{
+     ⎕IO←0
+     lights←1000 1000⍴0
+     to←#.U.To
+     segs←#.U.Segs
+     +/∊lights⊣{
+         words←¯6↑', 'segs ⍵
+         mode←'on' 'off' 'toggle'⍳⊂⊃words
+         x1 y1 x2 y2←⍎¨words[1 2 4 5]
+         mode=0:lights[x1 to x2;y1 to y2]+←1
+         mode=1:lights[x1 to x2;y1 to y2](0⌈-)←1
+         mode=2:lights[x1 to x2;y1 to y2]+←2
+     }¨⍵  ⍝ Do operations literally for each line
+ }

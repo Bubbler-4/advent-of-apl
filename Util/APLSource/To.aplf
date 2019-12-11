@@ -1,0 +1,6 @@
+ To←{
+     ⎕IO←0
+     ⍝ ⍺ to ⍵ inclusive in either direction
+     ⍺≤⍵:⍺+⍳1+⍵-⍺
+     ⍺-⍳1+⍺-⍵
+ }
