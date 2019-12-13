@@ -1,0 +1,13 @@
+ P7GTest←{
+     ⍝ No basic test, uses the same P7S function
+     in←#.U.ReadLines'input/2015/7.txt'
+     vars values←⍺⍺ in
+     idx←vars⍳⊂,'a'
+     b←idx⊃values
+     ⍝ Replace the row ending with '-> b'
+     idx←vars⍳⊂,'b'
+     in[idx]←⊂(⍕b),' -> b'
+     vars values←⍺⍺ in
+     idx←vars⍳⊂,'a'
+     idx⊃values
+ }

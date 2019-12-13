@@ -1,0 +1,30 @@
+ P7S←{
+     ⍝ Implement recursive topological sort
+     segs←#.U.Segs
+     trim←#.U.Trim
+     edges vertices←↓⍉' 'segs¨trim↑'->'∘segs¨⍵
+     vertices←⊃¨vertices
+     results←{¯1}¨vertices
+     tobin←(16⍴2)∘⊤
+     frombin←2∘⊥
+     not←{frombin~tobin ⍵}
+     and←{frombin(tobin ⍺)∧tobin ⍵}
+     or←{frombin(tobin ⍺)∨tobin ⍵}
+     lshift←{frombin 16↑⍵↓tobin ⍺}
+     rshift←{frombin ¯16↑(-⍵)↓tobin ⍺}
+     eval←{
+         ∧/⍵∊⎕D:⍎⍵  ⍝ If given expr is number, cast to number
+         idx←vertices⍳⊂⍵  ⍝ Find index of that identifier
+         value←idx⊃results
+         expr←idx⊃edges
+         0≤value:value  ⍝ Value already found
+         1=≢expr:⊢results[idx]←∇⊃expr  ⍝ one-item expr: eval it
+         2=≢expr:⊢results[idx]←not ∇ 2⊃expr  ⍝ two-item expr: NOT x
+         'AND'≡2⊃expr:⊢results[idx]←(∇⊃expr)and ∇ 3⊃expr  ⍝ x AND y
+         'OR'≡2⊃expr:⊢results[idx]←(∇⊃expr)or ∇ 3⊃expr  ⍝ x OR y
+         'LSHIFT'≡2⊃expr:⊢results[idx]←(∇⊃expr)lshift ∇ 3⊃expr  ⍝ x LSHIFT y
+         'RSHIFT'≡2⊃expr:⊢results[idx]←(∇⊃expr)rshift ∇ 3⊃expr  ⍝ x RSHIFT y
+         ⍬⊣⎕←'shouldn''t reach here'
+     }
+     vertices results⊣eval¨vertices
+ }

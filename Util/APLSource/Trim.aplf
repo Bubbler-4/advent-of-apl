@@ -1,0 +1,8 @@
+ Trim←{
+    ⍝ Copied from dfns.deb
+     ⍺←' ' ⋄ 1<|≡⍵:(⊂⍺)∇¨⍵                       ⍝ nested?
+     2<⍴⍴⍵:(¯1↓⍴⍵){(⍺,1↓⍴⍵)⍴⍵}⍺ ∇,[¯1↓⍳⍴⍴⍵]⍵     ⍝ array
+     b←⍵∊⍺                                       ⍝ mask
+     1≥⍴⍴⍵:((∧\b)⍱⌽∧\⌽b)/⍵                       ⍝ vector
+     b←∧⌿b ⋄ ((∧\b)⍱⌽∧\⌽b)/⍵                     ⍝ matrix
+ }
