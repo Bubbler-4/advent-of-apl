@@ -1,0 +1,17 @@
+ P1STest←{
+     f←⍺⍺
+     Assert←#.U.Assert
+     ⍝ Basic tests
+     _←Assert 0≡f'(())'
+     _←Assert 0≡f'()()'
+     _←Assert 3≡f'((('
+     _←Assert 3≡f'(()(()('
+     _←Assert 3≡f'))((((('
+     _←Assert ¯1≡f'())'
+     _←Assert ¯1≡f'))('
+     _←Assert ¯3≡f')))'
+     _←Assert ¯3≡f')())())'
+     ⎕←'All tests passed'
+     ⍝ Main test
+     f #.U.ReadFile'input/2015/1.txt'
+ }

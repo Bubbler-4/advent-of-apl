@@ -1,9 +1,0 @@
- r←P2STest
- ⍝ Basic tests
- Assert←#.U.Assert
- Assert 58≡P2S'2x3x4'
- Assert 43≡P2S'1x1x10'
- ⎕←'All tests passed'
- ⍝ Main test
- in←#.U.ReadLines'input/2015/2.txt'
- r←+/P2S¨in

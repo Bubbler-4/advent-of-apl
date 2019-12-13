@@ -1,0 +1,10 @@
+ P2GTest←{
+     f←⍺⍺
+     Assert←#.U.Assert
+     ⍝ Basic tests
+     _←Assert 34≡f'2x3x4'
+     _←Assert 14≡f'1x1x10'
+     ⎕←'All tests passed'
+     ⍝ Main test
+     +/f¨#.U.ReadLines'input/2015/2.txt'
+ }

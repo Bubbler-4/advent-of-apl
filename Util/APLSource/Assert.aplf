@@ -1,4 +1,4 @@
  Assert←{
      0=⍵:'Assertion Failure'⎕SIGNAL 11
-     shy←⍬
+     ⍬
  }

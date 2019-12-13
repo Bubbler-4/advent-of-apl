@@ -1,0 +1,10 @@
+ P1GTest←{
+     f←⍺⍺
+     Assert←#.U.Assert
+     ⍝ Basic tests
+     _←Assert 1≡f,')'
+     _←Assert 5≡f'()())'
+     ⎕←'All tests passed'
+     ⍝ Main test
+     f #.U.ReadFile'input/2015/1.txt'
+ }

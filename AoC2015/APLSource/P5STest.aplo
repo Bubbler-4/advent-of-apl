@@ -1,0 +1,13 @@
+ P5STest←{
+     f←⍺⍺
+     Assert←#.U.Assert
+     ⍝ Basic tests
+     _←Assert 1≡f'ugknbfddgicrmopn'
+     _←Assert 1≡f'aaa'
+     _←Assert 0≡f'jchzalrnumimnmhp'
+     _←Assert 0≡f'haegwjzuvuyypxyu'
+     _←Assert 0≡f'dvszwmarrgswjxmb'
+     ⎕←'All tests passed'
+     ⍝ Main test
+     +/f¨#.U.ReadLines'input/2015/5.txt'
+ }
