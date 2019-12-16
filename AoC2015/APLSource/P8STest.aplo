@@ -1,0 +1,13 @@
+ P8STest←{
+     f←⍺⍺
+     Assert←#.U.Assert
+     ⍝ Basic tests
+     Assert 2≡f'""':
+     Assert 2≡f'"aaa"':
+     Assert 3≡f'"aaa\"aaa"':
+     Assert 5≡f'"\x27"':
+     Assert 9≡f'"abc\\\"de\\x27\\\x34"':
+     ⎕←'All tests passed'
+     ⍝ Main test
+     +/f¨#.U.ReadLines'input/2015/8.txt'
+ }

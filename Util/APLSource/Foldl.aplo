@@ -1,0 +1,9 @@
+ Foldl←{  ⍝ derived from discussion with Adám; https://chat.stackexchange.com/transcript/message/52811881#52811881
+     foldl_aux←⍺⍺{
+         (≢⍵)≤1-×⎕NC'⍺':⍵
+         0=⎕NC'⍺':⊂r⊣⍺⍺{r ⍺⍺←⍵}¨1↓⍵⊣r←⊃⍵
+         ⊂r⊣⍺⍺{r ⍺⍺←⍵}¨⍵⊣r←⍺
+     }⍤1
+     0=⎕NC'⍺':foldl_aux ⍵
+     ⍺ foldl_aux ⍵
+ }
