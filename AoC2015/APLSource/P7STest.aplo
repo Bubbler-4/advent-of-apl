@@ -5,19 +5,19 @@
      spec←'123 -> x' '456 -> y'
      vars←(,'x')(,'y')
      values←123 456
-     _←Assert vars values≡f spec
+     Assert vars values≡f spec:
      spec,←'x AND y -> d' 'x OR y -> e'
      vars,←(,'d')(,'e')
      values,←72 507
-     _←Assert vars values≡f spec
+     Assert vars values≡f spec:
      spec,←'x LSHIFT 2 -> f' 'y RSHIFT 2 -> g'
      vars,←(,'f')(,'g')
      values,←492 114
-     _←Assert vars values≡f spec
+     Assert vars values≡f spec:
      spec,⍨←'NOT x -> h' 'NOT y -> i'
      vars,⍨←(,'h')(,'i')
      values,⍨←65412 65079
-     _←Assert vars values≡f spec
+     Assert vars values≡f spec:
      ⎕←'All tests passed'
      ⍝ Main test
      vars values←f #.U.ReadLines'input/2015/7.txt'

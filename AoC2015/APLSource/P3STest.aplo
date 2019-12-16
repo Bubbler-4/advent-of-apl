@@ -2,9 +2,9 @@
      f←⍺⍺
      Assert←#.U.Assert
      ⍝ Basic tests
-     _←Assert 2≡f,'>'
-     _←Assert 4≡f'^>v<'
-     _←Assert 2≡f'^v^v^v^v^v'
+     Assert 2≡f,'>':
+     Assert 4≡f'^>v<':
+     Assert 2≡f'^v^v^v^v^v':
      ⎕←'All tests passed'
      ⍝ Main test
      f ¯1↓#.U.ReadFile'input/2015/3.txt'

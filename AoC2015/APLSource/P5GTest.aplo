@@ -2,11 +2,11 @@
      f←⍺⍺
      Assert←#.U.Assert
      ⍝ Basic tests
-     _←Assert 1≡f'qjhvhtzxzqqjkmpb'
-     _←Assert 1≡f'xxyxx'
-     _←Assert 1≡f'xxxx'
-     _←Assert 0≡f'uurcxstgmygtbstg'
-     _←Assert 0≡f'ieodomkazucvgmuy'
+     Assert 1≡f'qjhvhtzxzqqjkmpb':
+     Assert 1≡f'xxyxx':
+     Assert 1≡f'xxxx':
+     Assert 0≡f'uurcxstgmygtbstg':
+     Assert 0≡f'ieodomkazucvgmuy':
      ⎕←'All tests passed'
      ⍝ Main test
      +/f¨#.U.ReadLines'input/2015/5.txt'
