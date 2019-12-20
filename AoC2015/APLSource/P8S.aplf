@@ -1,10 +1,10 @@
  P8S←{
-     sm←{  ⍝ state machine; ⍺: last state, ⍵: current char
+     SM←{  ⍝ state machine; ⍺: last state, ⍵: current char
          2≤⍺:4|1+⍺  ⍝ 2 → 3, 3 → 0
          ⍺:2×'x'=⍵  ⍝ 1 → 2 if next char is x, 1 → 0 otherwise
          '\'=⍵      ⍝ 0 → 1 if next char is \, 0 otherwise
      }
      s←1↓¯1↓⍵  ⍝ remove double quotes at both ends
-     ch←+/0=1↓0 sm #.U.Scanl s  ⍝ number of chars by state machine
+     ch←+/0=1↓0 SM #.U.Scanl s  ⍝ number of chars by state machine
      (≢⍵)-ch
  }

@@ -1,30 +1,27 @@
  P7S←{
      ⍝ Implement recursive topological sort
-     segs←#.U.Segs
-     trim←#.U.Trim
-     edges vertices←↓⍉' 'segs¨trim↑'->'∘segs¨⍵
+     Segs←#.U.Segs
+     Trim←#.U.Trim
+     (edges vertices)←↓⍉' 'Segs¨Trim↑'->'∘Segs¨⍵
      vertices←⊃¨vertices
-     results←{¯1}¨vertices
-     tobin←(16⍴2)∘⊤
-     frombin←2∘⊥
-     not←{frombin~tobin ⍵}
-     and←{frombin(tobin ⍺)∧tobin ⍵}
-     or←{frombin(tobin ⍺)∨tobin ⍵}
-     lshift←{frombin 16↑⍵↓tobin ⍺}
-     rshift←{frombin ¯16↑(-⍵)↓tobin ⍺}
-     eval←{
+     edges←(⊢,⍨(,'0')(,'⊢')↑⍨3-≢)¨edges  ⍝ Convert all edges to 3 segments
+     results←¯1⍴⍨≢vertices
+     ToBin←(16⍴2)∘⊤
+     FromBin←2∘⊥
+     Bin←{FromBin(ToBin ⍺)⍺⍺ ToBin ⍵}
+     NOT←=Bin
+     AND←∧Bin
+     OR←∨Bin
+     LSHIFT←{FromBin 16↑⍵⌽32↑ToBin ⍺}
+     RSHIFT←LSHIFT∘-
+     GetIdx←vertices∘⍳∘⊂
+     Eval←{
          ∧/⍵∊⎕D:⍎⍵  ⍝ If given expr is number, cast to number
-         idx←vertices⍳⊂⍵  ⍝ Find index of that identifier
+         idx←GetIdx ⍵  ⍝ Find index of that identifier
          value←idx⊃results
-         expr←idx⊃edges
          0≤value:value  ⍝ Value already found
-         1=≢expr:⊢results[idx]←∇⊃expr  ⍝ one-item expr: eval it
-         2=≢expr:⊢results[idx]←not ∇ 2⊃expr  ⍝ two-item expr: NOT x
-         'AND'≡2⊃expr:⊢results[idx]←(∇⊃expr)and ∇ 3⊃expr  ⍝ x AND y
-         'OR'≡2⊃expr:⊢results[idx]←(∇⊃expr)or ∇ 3⊃expr  ⍝ x OR y
-         'LSHIFT'≡2⊃expr:⊢results[idx]←(∇⊃expr)lshift ∇ 3⊃expr  ⍝ x LSHIFT y
-         'RSHIFT'≡2⊃expr:⊢results[idx]←(∇⊃expr)rshift ∇ 3⊃expr  ⍝ x RSHIFT y
-         ⍬⊣⎕←'shouldn''t reach here'
+         (x f y)←idx⊃edges
+         ⊢results[idx]←(∇ x)(⍎f)(∇ y)
      }
-     vertices results⊣eval¨vertices
+     vertices results⊣Eval¨vertices
  }

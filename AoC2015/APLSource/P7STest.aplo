@@ -20,7 +20,7 @@
      Assert vars values≡f spec:
      ⎕←'All tests passed'
      ⍝ Main test
-     vars values←f #.U.ReadLines'input/2015/7.txt'
+     (vars values)←f #.U.ReadLines'input/2015/7.txt'
      idx←vars⍳⊂,'a'
      idx⊃values
  }
