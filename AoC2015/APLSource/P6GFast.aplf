@@ -1,16 +1,15 @@
  P6GFast←{
      ⎕IO←0
      lights←1000 1000⍴0
-     min←lights  ⍝ Keep track of negative minimum to compute the final correct brightness
      To←#.U.To
      Segs←#.U.Segs
-     +/∊lights-min⊣{
+     +/∊lights⊣{
          words←¯6↑', 'Segs ⍵
-         mode←'on' 'off' 'toggle'⍳⊂⊃words
          (x1 y1 x2 y2)←⍎¨words[1 2 4 5]
          (xr yr)←(x1 To x2)(y1 To y2)
-         mode=0:lights[xr;yr]+←1
-         mode=1:min[xr;yr]⌊←lights[xr;yr]⊣lights[xr;yr]-←1
-         mode=2:lights[xr;yr]+←2
+         on←{lights[xr;yr]+←1}
+         off←{lights[xr;yr]⌈←0⊣lights[xr;yr]-←1}
+         toggle←{lights[xr;yr]+←2}
+         ⍬⊣(⍎⊃words)⍬
      }¨⍵  ⍝ Do operations literally, except 'turn off'
  }

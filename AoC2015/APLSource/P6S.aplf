@@ -5,10 +5,11 @@
      Segs←#.U.Segs
      +/∊lights⊣{
          words←¯6↑', 'Segs ⍵
-         mode←'on' 'off' 'toggle'⍳⊂⊃words
          (x1 y1 x2 y2)←⍎¨words[1 2 4 5]
-         mode=0:lights[x1 To x2;y1 To y2]←1
-         mode=1:lights[x1 To x2;y1 To y2]←0
-         mode=2:lights[x1 To x2;y1 To y2]⍲←1
+         (xr yr)←(x1 To x2)(y1 To y2)
+         on←{lights[xr;yr]←1}
+         off←{lights[xr;yr]←0}
+         toggle←{lights[xr;yr]⍲←1}
+         ⍬⊣(⍎⊃words)⍬
      }¨⍵  ⍝ Do operations literally for each line
  }
