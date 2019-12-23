@@ -1,0 +1,7 @@
+ Pmat←{ ⍝ copied from dfns.pmat
+     ⎕ML←1
+     {
+         1≥⍴⍵:↑,↓⍵
+         ↑⍪/⍵,∘∇¨⍵∘~¨⍵
+     }⍳⍵
+ }
