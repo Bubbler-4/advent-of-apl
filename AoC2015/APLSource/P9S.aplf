@@ -1,8 +1,11 @@
  P9S←{
      p1←'= '∘#.U.Segs¨⍵
      cities←∪⊃,/{⍵[1 3]}¨p1  ⍝ Identify city names
-     p2←{x _ y d←⍵ ⋄ (cities⍳x y),⍎d}¨p1  ⍝ Convert to indexes
      dmat←(2⍴≢cities)⍴0
-     _←{x y d←⍵ ⋄ ⊢dmat[(x y)(y x)]←d}¨p2  ⍝ Construct distance matrix
+     _←{
+         (x _ y d)←⍵
+         (x y)←cities⍳x y
+         ⊢dmat[(x y)(y x)]←⍎d
+     }¨p1  ⍝ Construct distance matrix
      ⌊/+/2{⍺ ⍵⌷dmat}/#.U.Pmat≢cities
  }
