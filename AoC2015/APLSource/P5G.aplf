@@ -1,9 +1,0 @@
- P5G←{
-     ⍝ Pair appearing at least twice: self-index - first index ≥ 2
-     pairs←2,/⍵
-     p1←2≤⌈/(⍳≢pairs)-⍳⍨pairs
-     ⍝ A char appearing twice with one char between
-     ⍝ first = last on chunks of 3
-     p2←∨/{(⊃⍵)=⊃⌽⍵}¨3,/⍵
-     p1∧p2
- }

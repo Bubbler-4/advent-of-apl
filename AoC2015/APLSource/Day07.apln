@@ -1,0 +1,83 @@
+:Namespace Day07
+      Circuit←{
+          ⍝ Implement recursive topological sort
+          Segs←#.U.Segs
+          Trim←#.U.Trim
+          (edges vertices)←↓⍉' 'Segs¨Trim↑'->'∘Segs¨⍵
+          vertices←⊃¨vertices
+          edges←(⊢,⍨(,'0')(,'⊢')↑⍨3-≢)¨edges  ⍝ Convert all edges to 3 segments
+          results←¯1⍴⍨≢vertices
+     
+          ToBin←(16⍴2)∘⊤
+          FromBin←2∘⊥
+          Bin←{FromBin(ToBin ⍺)⍺⍺ ToBin ⍵}
+          NOT←=Bin
+          AND←∧Bin
+          OR←∨Bin
+          LSHIFT←{FromBin 16↑⍵⌽32↑ToBin ⍺}
+          RSHIFT←LSHIFT∘-
+          GetIdx←vertices∘⍳∘⊂
+     
+          Eval←{
+              ∧/⍵∊⎕D:⍎⍵  ⍝ If given expr is number, cast to number
+              idx←GetIdx ⍵  ⍝ Find index of that identifier
+              value←idx⊃results
+              0≤value:value  ⍝ Value already found
+              (x f y)←idx⊃edges
+              ⊢results[idx]←(∇ x)(⍎f)(∇ y)
+          }
+          vertices results⊣Eval¨vertices
+      }
+
+      CircuitTest←{
+          f←⍺⍺
+          Assert←#.U.Assert
+     
+          spec←'123 -> x' '456 -> y'
+          vars←(,'x')(,'y')
+          values←123 456
+          Assert vars values≡f spec:
+          spec,←'x AND y -> d' 'x OR y -> e'
+          vars,←(,'d')(,'e')
+          values,←72 507
+          Assert vars values≡f spec:
+          spec,←'x LSHIFT 2 -> f' 'y RSHIFT 2 -> g'
+          vars,←(,'f')(,'g')
+          values,←492 114
+          Assert vars values≡f spec:
+          spec,⍨←'NOT x -> h' 'NOT y -> i'
+          vars,⍨←(,'h')(,'i')
+          values,⍨←65412 65079
+          Assert vars values≡f spec:
+          'All tests passed'
+      }
+
+    ∇ r←Data
+      r←#.U.ReadLines'input/2015/7.txt'
+    ∇
+
+      SilverSolve←{  ⍝ Extract result of 'a'
+          (vars values)←⍺⍺ ⍵
+          idx←vars⍳⊂,'a'
+          idx⊃values
+      }
+
+      GoldSolve←{  ⍝ Extract result of 'a', replace 'b', and run again
+          in←⍵
+          (vars values)←⍺⍺ in
+          idx←vars⍳⊂,'a'
+          b←idx⊃values
+          ⍝ Replace the row ending with '-> b'
+          idx←vars⍳⊂,'b'
+          in[idx]←⊂(⍕b),' -> b'
+          (vars values)←⍺⍺ in
+          idx←vars⍳⊂,'a'
+          idx⊃values
+      }
+
+    ∇ TestAll
+      '   Circuit Test: ',Circuit CircuitTest 0
+      'Silver Solution: ',⍕Circuit SilverSolve Data
+      '  Gold Solution: ',⍕Circuit GoldSolve Data
+    ∇
+:EndNamespace

@@ -1,7 +1,0 @@
- P5S←{
-     ⍝ f1: ≥3 vowels ⋄ f2: dupe letter ⋄ f3: no ab,cd,pq,xy
-     F1←3≤1⊥∊∘'aeiou'
-     F2←∨/2=/⊢
-     F3←∧/2{~'ab' 'cd' 'pq' 'xy'∊⍨⊂⍺,⍵}/⊢
-     (F1∧F2∧F3)⍵
- }

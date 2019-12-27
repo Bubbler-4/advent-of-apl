@@ -20,21 +20,29 @@ Also, any suggestions to improve the solutions (regarding performance, style, wh
 ### AoC 2015
 
 * Day 4 requires an MD5 function implementation.
-* `★F` indicates "faster version".
-* `☆★` indicates that the same function was used to solve both parts.
 
 | AoC 2015  | 1 | 2 | 3 | 4 | 5 |
 | :---:     |:-:|:-:|:-:|:-:|:-:|
-| **01~05** | [☆][15D1S] [★][15D1G] | [☆][15D2S] [★][15D2G] | [☆](AoC2015/APLSource/P3S.aplf) [★](AoC2015/APLSource/P3G.aplf) | Skip | [☆](AoC2015/APLSource/P5S.aplf) [★](AoC2015/APLSource/P5G.aplf) |
-| **06~10** | [☆](AoC2015/APLSource/P6S.aplf) [★](AoC2015/APLSource/P6G.aplf) [★F](AoC2015/APLSource/P6GFast.aplf) | [☆★](AoC2015/APLSource/P7S.aplf) | [☆](AoC2015/APLSource/P8S.aplf) [★](AoC2015/APLSource/P8G.aplf) | [☆](AoC2015/APLSource/P9S.aplf) [★](AoC2015/APLSource/P9G.aplf) | [☆★](AoC2015/APLSource/P10S.aplf) |
+| **01~05** | [☆][15D01S] [★][15D01G] | [☆][15D02S] [★][15D02G] | [☆][15D03S] [★][15D03G] | Skip | [☆][15D05S] [★][15D05G] |
+| **06~10** | [☆][15D06S] [★][15D06G] | [Circuit][15D07] [☆][15D07S] [★][15D07G] | [☆](AoC2015/APLSource/P8S.aplf) [★](AoC2015/APLSource/P8G.aplf) | [☆](AoC2015/APLSource/P9S.aplf) [★](AoC2015/APLSource/P9G.aplf) | [☆★](AoC2015/APLSource/P10S.aplf) |
 | **11~15** |   |   |   |   |   |
 | **16~20** |   |   |   |   |   |
 | **21~25** |   |   |   |   |   |
 
-[15D1S]: AoC2015/APLSource/Day01.apln#L2
-[15D1G]: AoC2015/APLSource/Day01.apln#L7
-[15D2S]: AoC2015/APLSource/Day02.apln#L2
-[15D2G]: AoC2015/APLSource/Day02.apln#L8
+[15D01S]: AoC2015/APLSource/Day01.apln#L2
+[15D01G]: AoC2015/APLSource/Day01.apln#L7
+[15D02S]: AoC2015/APLSource/Day02.apln#L2
+[15D02G]: AoC2015/APLSource/Day02.apln#L8
+[15D03S]: AoC2015/APLSource/Day03.apln#L2
+[15D03G]: AoC2015/APLSource/Day03.apln#L8
+[15D05S]: AoC2015/APLSource/Day05.apln#L2
+[15D05G]: AoC2015/APLSource/Day05.apln#L10
+
+[15D06S]: AoC2015/APLSource/Day06.apln#L5
+[15D06G]: AoC2015/APLSource/Day06.apln#L19
+[15D07]:  AoC2015/APLSource/Day07.apln#L2
+[15D07S]: AoC2015/APLSource/Day07.apln#L59
+[15D07G]: AoC2015/APLSource/Day07.apln#L65
 
 ### AoC 2016
 
