@@ -1,6 +1,0 @@
- P2G←{
-     ⍝ Split at 'x' and extract numbers
-     s←⍎¨'x'#.U.Segs ⍵
-     ⍝ Compute 2×(A+B+C - max(A,B,C)) + A×B×C
-     (×/s)+2×(+/s)-⌈/s
- }

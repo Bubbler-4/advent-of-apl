@@ -1,8 +1,0 @@
- P2S←{
-     ⍝ Called for each line
-     ⍝ Split at 'x' and extract numbers
-     s←⍎¨'x'#.U.Segs ⍵
-     ⍝ Compute three pairwise products A B C, and compute 2×(A+B+C)+min(A,B,C)
-     p←2×/4⍴s
-     (⌊/p)+2×+/p
- }

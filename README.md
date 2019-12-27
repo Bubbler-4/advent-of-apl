@@ -25,11 +25,16 @@ Also, any suggestions to improve the solutions (regarding performance, style, wh
 
 | AoC 2015  | 1 | 2 | 3 | 4 | 5 |
 | :---:     |:-:|:-:|:-:|:-:|:-:|
-| **01~05** | [☆](AoC2015/APLSource/Day01.apln#L2) [★](AoC2015/APLSource/Day01.apln#L7) | [☆](AoC2015/APLSource/P2S.aplf) [★](AoC2015/APLSource/P2G.aplf) | [☆](AoC2015/APLSource/P3S.aplf) [★](AoC2015/APLSource/P3G.aplf) | Skip | [☆](AoC2015/APLSource/P5S.aplf) [★](AoC2015/APLSource/P5G.aplf) |
+| **01~05** | [☆][15D1S] [★][15D1G] | [☆][15D2S] [★][15D2G] | [☆](AoC2015/APLSource/P3S.aplf) [★](AoC2015/APLSource/P3G.aplf) | Skip | [☆](AoC2015/APLSource/P5S.aplf) [★](AoC2015/APLSource/P5G.aplf) |
 | **06~10** | [☆](AoC2015/APLSource/P6S.aplf) [★](AoC2015/APLSource/P6G.aplf) [★F](AoC2015/APLSource/P6GFast.aplf) | [☆★](AoC2015/APLSource/P7S.aplf) | [☆](AoC2015/APLSource/P8S.aplf) [★](AoC2015/APLSource/P8G.aplf) | [☆](AoC2015/APLSource/P9S.aplf) [★](AoC2015/APLSource/P9G.aplf) | [☆★](AoC2015/APLSource/P10S.aplf) |
 | **11~15** |   |   |   |   |   |
 | **16~20** |   |   |   |   |   |
 | **21~25** |   |   |   |   |   |
+
+[15D1S]: AoC2015/APLSource/Day01.apln#L2
+[15D1G]: AoC2015/APLSource/Day01.apln#L7
+[15D2S]: AoC2015/APLSource/Day02.apln#L2
+[15D2G]: AoC2015/APLSource/Day02.apln#L8
 
 ### AoC 2016
 
