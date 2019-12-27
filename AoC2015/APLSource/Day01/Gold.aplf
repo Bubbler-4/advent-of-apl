@@ -1,5 +1,0 @@
- Gold←{
-     ⍝ Map '(' to +1, ')' to -1, cumulative sum,
-     ⍝ first index of negative number
-     ¯1⍳⍨+\('('=⍵)-')'=⍵
- }
