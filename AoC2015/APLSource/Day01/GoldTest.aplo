@@ -1,0 +1,7 @@
+ GoldTest←{
+     f←⍺⍺
+     Assert←#.U.Assert
+     Assert 1≡f,')':
+     Assert 5≡f'()())':
+     'All tests passed'
+ }

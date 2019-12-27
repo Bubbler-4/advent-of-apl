@@ -1,0 +1,2 @@
+ r←Data
+ r←#.U.ReadFile'input/2015/1.txt'

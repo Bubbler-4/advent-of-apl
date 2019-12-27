@@ -1,7 +1,6 @@
- P1STest←{
+ SilverTest←{
      f←⍺⍺
      Assert←#.U.Assert
-     ⍝ Basic tests
      Assert 0≡f'(())':
      Assert 0≡f'()()':
      Assert 3≡f'(((':
@@ -11,7 +10,5 @@
      Assert ¯1≡f'))(':
      Assert ¯3≡f')))':
      Assert ¯3≡f')())())':
-     ⎕←'All tests passed'
-     ⍝ Main test
-     f #.U.ReadFile'input/2015/1.txt'
+     'All tests passed'
  }
