@@ -1,4 +1,0 @@
- P10S←{
-     ⍝ Stringify not needed since max run of a digit is 3
-     ∊(≢,⊃)¨(1,2≠/⍵)⊂⍵
- }

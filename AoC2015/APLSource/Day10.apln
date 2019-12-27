@@ -1,0 +1,35 @@
+:Namespace Day10
+      LookSay←{
+          ⍝ Stringify not needed since max run of a digit is 3
+          ∊(≢,⊃)¨(1,2≠/⍵)⊂⍵
+      }
+
+      LookSayTest←{
+          f←⍺⍺
+          Assert←#.U.Assert
+          Assert 1 1≡f,1:
+          Assert 2 1≡f⍣2,1:
+          Assert 1 2 1 1≡f⍣3,1:
+          Assert 1 1 1 2 2 1≡f⍣4,1:
+          Assert 3 1 2 2 1 1≡f⍣5,1:
+          'All tests passed'
+      }
+
+    ∇ r←Data
+      r←⍎¨'3113322113'
+    ∇
+
+      SilverSolve←{  ⍝ Run 40 times and report length
+          ≢⍺⍺⍣40⊢⍵
+      }
+
+      GoldSolve←{  ⍝ Run 50 times and report length
+          ≢⍺⍺⍣50⊢⍵
+      }
+
+    ∇ TestAll
+      '   LookSay Test: ',LookSay LookSayTest 0
+      'Silver Solution: ',⍕LookSay SilverSolve Data
+      '  Gold Solution: ',⍕LookSay GoldSolve Data
+    ∇
+:EndNamespace

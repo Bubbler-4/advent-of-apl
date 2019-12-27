@@ -1,0 +1,48 @@
+:Namespace Day09
+      DistanceSums←{
+          p1←'= '∘#.U.Segs¨⍵
+          cities←∪⊃,/{⍵[1 3]}¨p1  ⍝ Identify city names
+          dmat←(2⍴≢cities)⍴0
+          _←{
+              (x _ y d)←⍵
+              (x y)←cities⍳x y
+              ⊢dmat[(x y)(y x)]←⍎d
+          }¨p1  ⍝ Construct distance matrix
+          +/2{⍺ ⍵⌷dmat}/#.U.Pmat≢cities
+      }
+
+      Silver←{  ⍝ Minimum of distance sums
+          ⌊/DistanceSums ⍵
+      }
+
+      Gold←{  ⍝ Maximum of distance sums
+          ⌈/DistanceSums ⍵
+      }
+
+      SilverTest←{
+          f←⍺⍺
+          Assert←#.U.Assert
+          Assert 11≡f⊂'Dumb to Dumber = 11':
+          Assert 605≡f'London to Dublin = 464' 'London to Belfast = 518' 'Dublin to Belfast = 141':
+          'All tests passed'
+      }
+
+      GoldTest←{
+          f←⍺⍺
+          Assert←#.U.Assert
+          Assert 11≡f⊂'Dumb to Dumber = 11':
+          Assert 982≡f'London to Dublin = 464' 'London to Belfast = 518' 'Dublin to Belfast = 141':
+          'All tests passed'
+      }
+
+    ∇ r←Data
+      r←#.U.ReadLines'input/2015/9.txt'
+    ∇
+
+    ∇ TestAll
+      '    Silver Test: ',Silver SilverTest 0
+      '      Gold Test: ',Gold GoldTest 0
+      'Silver Solution: ',⍕Silver Data
+      '  Gold Solution: ',⍕Gold Data
+    ∇
+:EndNamespace

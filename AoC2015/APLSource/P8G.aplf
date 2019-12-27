@@ -1,3 +1,0 @@
- P8G←{
-     2++/⍵∊'\"'  ⍝ Escape quotes and backslashes, and add two quotes
- }
