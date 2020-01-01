@@ -1,0 +1,3 @@
+ NewSol←{
+     ⍺.⎕FIX(':Namespace ',⍵)':EndNamespace'
+ }
