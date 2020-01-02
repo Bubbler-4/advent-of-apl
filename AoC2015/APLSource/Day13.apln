@@ -14,7 +14,7 @@
           +/2{⍺ ⍵⌷hmat}/(1+≢names)∘⍴⍤1 #.U.Pmat≢names  ⍝ cyclic
       }
 
-      Silver←⌈/ HappyTable
+    Silver←⌈/ HappyTable
     Gold←⌈/ 1∘HappyTable
 
     ∇ r←ExampleData
@@ -30,7 +30,7 @@
 
       GoldTest←{
           f←⍺⍺
-        Assert←#.U.Assert
+          Assert←#.U.Assert
           Assert 286≡f ExampleData:
           'All tests passed'
       }

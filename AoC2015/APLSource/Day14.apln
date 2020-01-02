@@ -1,0 +1,61 @@
+:Namespace Day14
+      Distance←{  ⍝ (running_time Distance sentence) → name total_distance
+          (name speed run_time rest_time)←1 4 7 14⊃¨⊂' ,.'#.U.Segs ⍵
+          (speed run_time rest_time)←⍎¨speed run_time rest_time
+          (full_runs last_run)←(0,run_time+rest_time)⊤⍺
+          name(speed×run_time⊥full_runs,run_time⌊last_run)
+      }
+
+      Silver←{
+          (names distances)←↓⍉↑⍺ Distance¨⍵
+          ⌈/distances
+      }
+
+      Movements←{  ⍝ (running_time Distance sentence) → (positions over time)
+          (speed run_time rest_time)←⍎¨4 7 14⊃¨⊂' ,.'#.U.Segs ⍵
+          +\⍺⍴(run_time+rest_time)↑run_time⍴speed
+      }
+
+      Gold←{
+          moves←↑⍺ Movements¨⍵
+          ⌈/+/moves=(⍴moves)⍴⌈⌿moves  ⍝ max of points of each reindeer
+      }
+
+    ∇ r←ExampleData
+      r←⊂'Comet can fly 14 km/s for 10 seconds, but then must rest for 127 seconds.'
+      r,←⊂'Dancer can fly 16 km/s for 11 seconds, but then must rest for 162 seconds.'
+    ∇
+
+      DistanceTest←{
+          f←⍺⍺
+          Assert←#.U.Assert
+          Assert('Comet' 1120)('Dancer' 1056)≡1000 f¨ExampleData:
+          'All tests passed'
+      }
+
+      SilverTest←{
+          f←⍺⍺
+          Assert←#.U.Assert
+          Assert 1120≡1000 f ExampleData:
+          'All tests passed'
+      }
+
+      GoldTest←{
+          f←⍺⍺
+          Assert←#.U.Assert
+          Assert 689≡1000 f ExampleData:
+          'All tests passed'
+      }
+
+    ∇ r←Data
+      r←#.U.ReadLines'input/2015/14.txt'
+    ∇
+
+    ∇ TestAll
+      '  Distance Test: ',Distance DistanceTest 0
+      '    Silver Test: ',Silver SilverTest 0
+      '      Gold Test: ',Gold GoldTest 0
+      'Silver Solution: ',⍕2503 Silver Data
+      '  Gold Solution: ',⍕2503 Gold Data
+    ∇
+:EndNamespace
