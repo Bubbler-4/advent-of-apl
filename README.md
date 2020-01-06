@@ -62,9 +62,9 @@ Also, any suggestions to improve the solutions (regarding performance, style, wh
 [15D14S]: AoC2015/APLSource/Day14.apln#L9
 [15D14G1]: AoC2015/APLSource/Day14.apln#L14
 [15D14G]: AoC2015/APLSource/Day14.apln#L19
-[15D15]:  AoC2015/APLSource/Day13.apln#L4
-[15D15S]: AoC2015/APLSource/Day13.apln#L12
-[15D15G]: AoC2015/APLSource/Day13.apln#L16
+[15D15]:  AoC2015/APLSource/Day15.apln#L4
+[15D15S]: AoC2015/APLSource/Day15.apln#L12
+[15D15G]: AoC2015/APLSource/Day15.apln#L16
 
 ### AoC 2016
 
