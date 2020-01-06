@@ -1,0 +1,47 @@
+:Namespace Day15
+    Cmat←#.U.Cmat
+
+    ⍝ All partitions of ⍵ into ⍺ chunks
+    ⍝ Note that there are (⍺-1)!(⍺+⍵-1) such partitions.
+    ⍝ The following function uses Cmat to generate them.
+    Partitions←(¯1+2-⍨/0,+,⍨(¯1+⊣)Cmat ¯1++)
+
+    ⍝ Extract numbers from lines of text
+    Numbers←(⍎¨((⎕UCS 31 + ⍳126-31)~'-',⎕D)∘#.U.Segs)¨
+
+      Silver←{  ⍝ spoons Silver ingredients → best score from all possible partitions
+          ⌈/×/0⌈((≢⍵)Partitions ⍺)+.×↑¯1↓¨⍵
+      }
+
+      Gold←{  ⍝ spoons Gold ingredients → best score with exactly 500 calories
+          scores←0⌈((≢⍵)Partitions ⍺)+.×↑⍵
+          ⌈/×/(¯1∘↓,500=⊃∘⌽)⍤1⊢scores  ⍝  filter by (last column = 500)
+      }
+
+    ExampleData←(¯1 ¯2 6 3 8)(2 3 ¯2 ¯1 3)
+
+      SilverTest←{
+          f←⍺⍺
+          Assert←#.U.Assert
+          Assert 62842880≡100 f ExampleData:
+          'All tests passed'
+      }
+
+      GoldTest←{
+          f←⍺⍺
+          Assert←#.U.Assert
+          Assert 57600000≡100 f ExampleData:
+          'All tests passed'
+      }
+
+    ∇ r←Data
+      r←Numbers #.U.ReadLines'input/2015/15.txt'
+    ∇
+
+    ∇ TestAll
+      '    Silver Test: ',Silver SilverTest 0
+      '      Gold Test: ',Gold GoldTest 0
+      'Silver Solution: ',⍕100 Silver Data
+      '  Gold Solution: ',⍕100 Gold Data
+    ∇
+:EndNamespace
