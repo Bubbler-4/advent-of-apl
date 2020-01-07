@@ -27,7 +27,7 @@ Also, any suggestions to improve the solutions (regarding performance, style, wh
 | **01~05** | [☆][15D01S] [★][15D01G] | [☆][15D02S] [★][15D02G] | [☆][15D03S] [★][15D03G] | Skip | [☆][15D05S] [★][15D05G] |
 | **06~10** | [☆][15D06S] [★][15D06G] | [Circuit][15D07] [☆][15D07S] [★][15D07G] | [☆][15D08S] [★][15D08G] | [DistanceSums][15D09] [☆][15D09S] [★][15D09G] | [LookSay][15D10] [☆][15D10S] [★][15D10G] |
 | **11~15** | Skip | [☆][15D12S] [★][15D12G] | [HappyTable][15D13] [☆][15D13S] [★][15D13G] | [Distance][15D14S1] [☆][15D14S] <br> [Movements][15D14G1] [★][15D14G] | [Partitions][15D15] [☆][15D15S] [★][15D15G] |
-| **16~20** |   |   |   |   |   |
+| **16~20** | [☆][15D16S] [★][15D16G] |   |   |   |   |
 | **21~25** |   |   |   |   |   |
 
 [15D01S]: AoC2015/APLSource/Day01.apln#L2
@@ -65,6 +65,9 @@ Also, any suggestions to improve the solutions (regarding performance, style, wh
 [15D15]:  AoC2015/APLSource/Day15.apln#L4
 [15D15S]: AoC2015/APLSource/Day15.apln#L12
 [15D15G]: AoC2015/APLSource/Day15.apln#L16
+
+[15D16S]: AoC2015/APLSource/Day16.apln#L4
+[15D16G]: AoC2015/APLSource/Day16.apln#L10
 
 ### AoC 2016
 
