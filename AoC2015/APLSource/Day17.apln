@@ -1,0 +1,42 @@
+:Namespace Day17
+    Foldl←{⍺ ⍺⍺ #.U.Foldl ⍵}
+    
+    Silver←{  ⍝ ⍺←target sum, ⍵←item sizes
+        ⍝ For each item, compute array of # of possible combinations,
+        ⍝ so that array[i+⎕IO] is # of combinations with sum i. 
+        (1+⍺)⊃⊃1 {⍺(,+,⍨)⍵⍴0}Foldl ⍵
+    }
+    
+    Gold←{  ⍝ ⍺←target sum, ⍵←item sizes
+        ⍝ Do the same for Silver, but accumulate a matrix instead,
+        ⍝ so that array[r+⎕IO;i+⎕IO] is # of combinations using r items with sum i.
+        ⊃0~⍨(1+⍺)⊃⍤1⊃⊃(⊂1 1⍴1) {⊂(⊃⍺)(↑⍨+↑⍨∘-)1⍵+⍴⊃⍺}Foldl ⍵
+    }
+    
+    ExampleData←20 15 10 5 5
+    
+    SilverTest←{
+        f←⍺⍺
+        Assert←#.U.Assert
+        Assert 4≡25 f ExampleData:
+        'All tests passed'
+    }
+    
+    GoldTest←{
+        f←⍺⍺
+        Assert←#.U.Assert
+        Assert 3≡25 f ExampleData:
+        'All tests passed'
+    }
+    
+    ∇ r←Data
+      r←⍎¨#.U.ReadLines'input/2015/17.txt'
+    ∇
+    
+    ∇ TestAll
+      '    Silver Test: ',Silver SilverTest 0
+      '      Gold Test: ',Gold GoldTest 0
+      'Silver Solution: ',⍕150 Silver Data
+      '  Gold Solution: ',⍕150 Gold Data
+    ∇
+:EndNamespace
