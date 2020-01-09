@@ -1,49 +1,49 @@
 :Namespace Day08
     Silver←{
-     SM←{  ⍝ state machine; ⍺: last state, ⍵: current char
-         2≤⍺:4|1+⍺  ⍝ 2 → 3, 3 → 0
-         ⍺:2×'x'=⍵  ⍝ 1 → 2 if next char is x, 1 → 0 otherwise
-         '\'=⍵      ⍝ 0 → 1 if next char is \, 0 otherwise
-     }
-     s←1↓¯1↓⍵  ⍝ remove double quotes at both ends
-     ch←+/0=1↓0 SM #.U.Scanl s  ⍝ number of chars by state machine
-     (≢⍵)-ch
- }
-
-    Gold←{
-     2++/⍵∊'\"'  ⍝ Escape quotes and backslashes, and add two quotes
- }
-
-    SilverTest←{
-     f←⍺⍺
-     Assert←#.U.Assert
-     Assert 2≡f'""':
-     Assert 2≡f'"aaa"':
-     Assert 3≡f'"aaa\"aaa"':
-     Assert 5≡f'"\x27"':
-     Assert 9≡f'"abc\\\"de\\x27\\\x34"':
-     'All tests passed'
- }
-
-    GoldTest←{
-     f←⍺⍺
-     Assert←#.U.Assert
-     Assert 4≡f'""':
-     Assert 4≡f'"aaa"':
-     Assert 6≡f'"aaa\"aaa"':
-     Assert 5≡f'"\x27"':
-     Assert 13≡f'"abc\\\"de\\x27\\\x34"':
-     'All tests passed'
+        SM←{  ⍝ state machine; ⍺: last state, ⍵: current char
+            2≤⍺:4|1+⍺  ⍝ 2 → 3, 3 → 0
+            ⍺:2×'x'=⍵  ⍝ 1 → 2 if next char is x, 1 → 0 otherwise
+            '\'=⍵      ⍝ 0 → 1 if next char is \, 0 otherwise
+        }
+        s←1↓¯1↓⍵  ⍝ remove double quotes at both ends
+        ch←+/0=1↓0 SM #.U.Scanl s  ⍝ number of chars by state machine
+        (≢⍵)-ch
     }
-
+    
+    Gold←{
+        2++/⍵∊'\"'  ⍝ Escape quotes and backslashes, and add two quotes
+    }
+    
+    SilverTest←{
+        f←⍺⍺
+        Assert←#.U.Assert
+        Assert 2≡f'""':
+        Assert 2≡f'"aaa"':
+        Assert 3≡f'"aaa\"aaa"':
+        Assert 5≡f'"\x27"':
+        Assert 9≡f'"abc\\\"de\\x27\\\x34"':
+        'All tests passed'
+    }
+    
+    GoldTest←{
+        f←⍺⍺
+        Assert←#.U.Assert
+        Assert 4≡f'""':
+        Assert 4≡f'"aaa"':
+        Assert 6≡f'"aaa\"aaa"':
+        Assert 5≡f'"\x27"':
+        Assert 13≡f'"abc\\\"de\\x27\\\x34"':
+        'All tests passed'
+    }
+    
     ∇ r←Data
       r←#.U.ReadLines'input/2015/8.txt'
     ∇
-
-      Solve←{  ⍝ Apply to each row and sum
-          +/⍺⍺¨⍵
-      }
-
+    
+    Solve←{  ⍝ Apply to each row and sum
+        +/⍺⍺¨⍵
+    }
+    
     ∇ TestAll
       '    Silver Test: ',Silver SilverTest 0
       '      Gold Test: ',Gold GoldTest 0

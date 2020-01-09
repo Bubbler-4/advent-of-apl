@@ -1,38 +1,38 @@
 :Namespace Day03
-      Silver←{
-          ⍝ 1-based index in '^<v>' of each char, power of 0j1 to represent directions,
-          ⍝ cumulative sum from zero and count unique elements.
-          ≢∪+\0,0J1*'^<v>'⍳⍵
-      }
-
-      Gold←{
-          ⍝ Reshape into two columns, do the same as Silver in column direction,
-          ⍝ flatten and count unique elements
-          ≢∪,+⍀0⍪0J1*'^<v>'⍳(0.5×≢⍵)2⍴⍵
-      }
-
-      SilverTest←{
-          f←⍺⍺
-          Assert←#.U.Assert
-          Assert 2≡f,'>':
-          Assert 4≡f'^>v<':
-          Assert 2≡f'^v^v^v^v^v':
-          'All tests passed'
-      }
-
-      GoldTest←{
-          f←⍺⍺
-          Assert←#.U.Assert
-          Assert 3≡f,'^v':
-          Assert 3≡f'^>v<':
-          Assert 11≡f'^v^v^v^v^v':
-          'All tests passed'
-      }
-
+    Silver←{
+        ⍝ 1-based index in '^<v>' of each char, power of 0j1 to represent directions,
+        ⍝ cumulative sum from zero and count unique elements.
+        ≢∪+\0,0J1*'^<v>'⍳⍵
+    }
+    
+    Gold←{
+        ⍝ Reshape into two columns, do the same as Silver in column direction,
+        ⍝ flatten and count unique elements
+        ≢∪,+⍀0⍪0J1*'^<v>'⍳(0.5×≢⍵)2⍴⍵
+    }
+    
+    SilverTest←{
+        f←⍺⍺
+        Assert←#.U.Assert
+        Assert 2≡f,'>':
+        Assert 4≡f'^>v<':
+        Assert 2≡f'^v^v^v^v^v':
+        'All tests passed'
+    }
+    
+    GoldTest←{
+        f←⍺⍺
+        Assert←#.U.Assert
+        Assert 3≡f,'^v':
+        Assert 3≡f'^>v<':
+        Assert 11≡f'^v^v^v^v^v':
+        'All tests passed'
+    }
+    
     ∇ r←Data
       r←¯1↓#.U.ReadFile'input/2015/3.txt'
     ∇
-
+    
     ∇ TestAll
       '    Silver Test: ',Silver SilverTest 0
       '      Gold Test: ',Gold GoldTest 0

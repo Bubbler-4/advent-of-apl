@@ -1,44 +1,44 @@
 :Namespace Day13
-      HappyTable←{
-          ⍺←0
-          sentences←'. '∘#.U.Segs¨⍵
-          names←∪⊃¨sentences  ⍝ Identify guests' names
-          hmat←(2⍴≢names)⍴0
-          _←{
-              (x y)←names⍳⍵[1 11]
-              (sign magnitude)←⍵[3 4]
-              gain←+ ⋄ lose←-
-              ⊢hmat[(x y)(y x)]+←(⍎sign)⍎magnitude
-          }¨sentences  ⍝ Construct happiness matrix
-          ×⍺:+/2{⍺ ⍵⌷hmat}/#.U.Pmat≢names  ⍝ nonzero ⍺: acyclic
-          +/2{⍺ ⍵⌷hmat}/(1+≢names)∘⍴⍤1 #.U.Pmat≢names  ⍝ cyclic
-      }
-
+    HappyTable←{
+        ⍺←0
+        sentences←'. '∘#.U.Segs¨⍵
+        names←∪⊃¨sentences  ⍝ Identify guests' names
+        hmat←(2⍴≢names)⍴0
+        _←{
+            (x y)←names⍳⍵[1 11]
+            (sign magnitude)←⍵[3 4]
+            gain←+ ⋄ lose←-
+            ⊢hmat[(x y)(y x)]+←(⍎sign)⍎magnitude
+        }¨sentences  ⍝ Construct happiness matrix
+        ×⍺:+/2{⍺ ⍵⌷hmat}/#.U.Pmat≢names  ⍝ nonzero ⍺: acyclic
+        +/2{⍺ ⍵⌷hmat}/(1+≢names)∘⍴⍤1 #.U.Pmat≢names  ⍝ cyclic
+    }
+    
     Silver←⌈/ HappyTable
     Gold←⌈/ 1∘HappyTable
-
+    
     ∇ r←ExampleData
       r←#.U.ReadLines'input/2015/13_example.txt'
     ∇
-
-      SilverTest←{
-          f←⍺⍺
-          Assert←#.U.Assert
-          Assert 330≡f ExampleData:
-          'All tests passed'
-      }
-
-      GoldTest←{
-          f←⍺⍺
-          Assert←#.U.Assert
-          Assert 286≡f ExampleData:
-          'All tests passed'
-      }
-
+    
+    SilverTest←{
+        f←⍺⍺
+        Assert←#.U.Assert
+        Assert 330≡f ExampleData:
+        'All tests passed'
+    }
+    
+    GoldTest←{
+        f←⍺⍺
+        Assert←#.U.Assert
+        Assert 286≡f ExampleData:
+        'All tests passed'
+    }
+    
     ∇ r←Data
       r←#.U.ReadLines'input/2015/13.txt'
     ∇
-
+    
     ∇ TestAll
       '    Silver Test: ',Silver SilverTest 0
       '      Gold Test: ',Gold GoldTest 0

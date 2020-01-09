@@ -1,39 +1,39 @@
 :Namespace Day02
-      Silver←{
-          ⍝ Compute three pairwise products A B C, and compute 2×(A+B+C)+min(A,B,C)
-          p←2×/4⍴⍵
-          (⌊/p)+2×+/p
-      }
-
-      Gold←{
-          ⍝ Compute 2×(A+B+C - max(A,B,C)) + A×B×C
-          (×/⍵)+2×(+/⍵)-⌈/⍵
-      }
-
-      SilverTest←{
-          f←⍺⍺
-          Assert←#.U.Assert
-          Assert 58≡f 2 3 4:
-          Assert 43≡f 1 1 10:
-          'All tests passed'
-      }
-
-      GoldTest←{
-          f←⍺⍺
-          Assert←#.U.Assert
-          Assert 34≡f 2 3 4:
-          Assert 14≡f 1 1 10:
-          'All tests passed'
-      }
-
+    Silver←{
+        ⍝ Compute three pairwise products A B C, and compute 2×(A+B+C)+min(A,B,C)
+        p←2×/4⍴⍵
+        (⌊/p)+2×+/p
+    }
+    
+    Gold←{
+        ⍝ Compute 2×(A+B+C - max(A,B,C)) + A×B×C
+        (×/⍵)+2×(+/⍵)-⌈/⍵
+    }
+    
+    SilverTest←{
+        f←⍺⍺
+        Assert←#.U.Assert
+        Assert 58≡f 2 3 4:
+        Assert 43≡f 1 1 10:
+        'All tests passed'
+    }
+    
+    GoldTest←{
+        f←⍺⍺
+        Assert←#.U.Assert
+        Assert 34≡f 2 3 4:
+        Assert 14≡f 1 1 10:
+        'All tests passed'
+    }
+    
     ∇ r←Data
       r←{⍎¨'x'#.U.Segs ⍵}¨#.U.ReadLines'input/2015/2.txt'
     ∇
-
-      Solve←{  ⍝ Apply to each row and sum
-          +/⍺⍺¨⍵
-      }
-
+    
+    Solve←{  ⍝ Apply to each row and sum
+        +/⍺⍺¨⍵
+    }
+    
     ∇ TestAll
       '    Silver Test: ',Silver SilverTest 0
       '      Gold Test: ',Gold GoldTest 0

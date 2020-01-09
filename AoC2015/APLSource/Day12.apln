@@ -1,65 +1,65 @@
 :Namespace Day12
-      Silver←{
-          {
-              ×≢⍴⍵:+/∇¨⍵  ⍝ If ⍵ is non-atom array, sum over each
-              kind←{16::'n' ⋄ ⊃0⍴⍵}⍵  ⍝ Kind of element
-              kind=' ':0  ⍝ If ⍵ is string, 0
-              kind=0:⍵  ⍝ If ⍵ is number, self
-              names←⍵.⎕NL ¯2 ¯9  ⍝ If ⍵ is namespace, sum over each property
-              0=≢names:0  ⍝ Empty namespace
-              +/∇{⍺⍺ ⍵⍵.⍎⍵}⍵¨names
-          }⎕JSON ⍵
-      }
-
-      Gold←{
-          {
-              ×≢⍴⍵:+/∇¨⍵  ⍝ If ⍵ is non-atom array, sum over each
-              kind←{16::'n' ⋄ ⊃0⍴⍵}⍵  ⍝ Kind of element
-              kind=' ':0  ⍝ If ⍵ is string, 0
-              kind=0:⍵  ⍝ If ⍵ is number, self
-              names←⍵.⎕NL ¯2 ¯9  ⍝ If ⍵ is namespace, sum over each property
-              0=≢names:0  ⍝ Empty namespace
-              values←⍵.⍎¨names
-              (⊂'red')∊values:0 ⍝ Ignore object having a value 'red'
-              +/∇{⍺⍺ ⍵⍵.⍎⍵}⍵¨names
-          }⎕JSON ⍵
-      }
-
-      SilverTest←{
-          f←⍺⍺
-          Assert←#.U.Assert
-          Assert 6≡f'[1,2,3]':
-          Assert 6≡f'{"a":2,"b":4}':
-          Assert 3≡f'[[[3]]]':
-          Assert 3≡f'{"a":{"b":4},"c":-1}':
-          Assert 0≡f'{"a":[-1,1]}':
-          Assert 0≡f'[-1,{"a":1}]':
-          Assert 0≡f'[]':
-          Assert 0≡f'{}':
-          'All tests passed'
+    Silver←{
+        {
+            ×≢⍴⍵:+/∇¨⍵  ⍝ If ⍵ is non-atom array, sum over each
+            kind←{16::'n' ⋄ ⊃0⍴⍵}⍵  ⍝ Kind of element
+            kind=' ':0  ⍝ If ⍵ is string, 0
+            kind=0:⍵  ⍝ If ⍵ is number, self
+            names←⍵.⎕NL ¯2 ¯9  ⍝ If ⍵ is namespace, sum over each property
+            0=≢names:0  ⍝ Empty namespace
+            +/∇{⍺⍺ ⍵⍵.⍎⍵}⍵¨names
+        }⎕JSON ⍵
     }
-
-      GoldTest←{
-          f←⍺⍺
-          Assert←#.U.Assert
-          Assert 6≡f'[1,2,3]':
-          Assert 6≡f'{"a":2,"b":4}':
-          Assert 3≡f'[[[3]]]':
-          Assert 3≡f'{"a":{"b":4},"c":-1}':
-          Assert 0≡f'{"a":[-1,1]}':
-          Assert 0≡f'[-1,{"a":1}]':
-          Assert 0≡f'[]':
-          Assert 0≡f'{}':
+    
+    Gold←{
+        {
+            ×≢⍴⍵:+/∇¨⍵  ⍝ If ⍵ is non-atom array, sum over each
+            kind←{16::'n' ⋄ ⊃0⍴⍵}⍵  ⍝ Kind of element
+            kind=' ':0  ⍝ If ⍵ is string, 0
+            kind=0:⍵  ⍝ If ⍵ is number, self
+            names←⍵.⎕NL ¯2 ¯9  ⍝ If ⍵ is namespace, sum over each property
+            0=≢names:0  ⍝ Empty namespace
+            values←⍵.⍎¨names
+            (⊂'red')∊values:0 ⍝ Ignore object having a value 'red'
+            +/∇{⍺⍺ ⍵⍵.⍎⍵}⍵¨names
+        }⎕JSON ⍵
+    }
+    
+    SilverTest←{
+        f←⍺⍺
+        Assert←#.U.Assert
+        Assert 6≡f'[1,2,3]':
+        Assert 6≡f'{"a":2,"b":4}':
+        Assert 3≡f'[[[3]]]':
+        Assert 3≡f'{"a":{"b":4},"c":-1}':
+        Assert 0≡f'{"a":[-1,1]}':
+        Assert 0≡f'[-1,{"a":1}]':
+        Assert 0≡f'[]':
+        Assert 0≡f'{}':
+        'All tests passed'
+    }
+    
+    GoldTest←{
+        f←⍺⍺
+        Assert←#.U.Assert
+        Assert 6≡f'[1,2,3]':
+        Assert 6≡f'{"a":2,"b":4}':
+        Assert 3≡f'[[[3]]]':
+        Assert 3≡f'{"a":{"b":4},"c":-1}':
+        Assert 0≡f'{"a":[-1,1]}':
+        Assert 0≡f'[-1,{"a":1}]':
+        Assert 0≡f'[]':
+        Assert 0≡f'{}':
         Assert 4≡f'[1,{"c":"red","b":2},3]':
         Assert 0≡f'{"d":"red","e":[1,2,3,4],"f":5}':
         Assert 6≡f'[1,"red",5]':
-          'All tests passed'
-      }
-
+        'All tests passed'
+    }
+    
     ∇ r←Data
       r←#.U.ReadFile'input/2015/12.txt'
     ∇
-
+    
     ∇ TestAll
       '    Silver Test: ',Silver SilverTest 0
       '      Gold Test: ',Gold GoldTest 0

@@ -1,35 +1,35 @@
 :Namespace Day16
     Segs←#.U.Segs
-
-      Silver←{  ⍝ ⍺←clues, ⍵←aunts, find the index of the real aunt
-          ⍸⍺∘{
-              1=≢⍺~⍨↓⍵⍴⍨2,⍨0.5×≢⍵  ⍝ length(chunks of 2 ~ clues) = 1
-          }¨⍵
-      }
-
-      Gold←{  ⍝ ⍺←clues, ⍵←aunts, find the index of the real aunt
-          (cwords cvals)←↓⍉↑⍺
-          cvals←⍎¨cvals
-          ⍸{
-              (awords avals)←↓⍉↑1↓↓⍵⍴⍨2,⍨0.5×≢⍵
-              avals←⍎¨avals
-              ∧/{
-                  (cval aval)←cvals avals⊃⍨¨cwords awords⍳¨⊂⊂⍵
-                  (⊂⍵)∊'cats' 'trees':cval<aval
-                  (⊂⍵)∊'pomeranians' 'goldfish':cval>aval
-                  cval=aval
-              }¨awords  ⍝ check all items match the clues
-          }¨⍵
-      }
-
+    
+    Silver←{  ⍝ ⍺←clues, ⍵←aunts, find the index of the real aunt
+        ⍸⍺∘{
+            1=≢⍺~⍨↓⍵⍴⍨2,⍨0.5×≢⍵  ⍝ length(chunks of 2 ~ clues) = 1
+        }¨⍵
+    }
+    
+    Gold←{  ⍝ ⍺←clues, ⍵←aunts, find the index of the real aunt
+        (cwords cvals)←↓⍉↑⍺
+        cvals←⍎¨cvals
+        ⍸{
+            (awords avals)←↓⍉↑1↓↓⍵⍴⍨2,⍨0.5×≢⍵
+            avals←⍎¨avals
+            ∧/{
+                (cval aval)←cvals avals⊃⍨¨cwords awords⍳¨⊂⊂⍵
+                (⊂⍵)∊'cats' 'trees':cval<aval
+                (⊂⍵)∊'pomeranians' 'goldfish':cval>aval
+                cval=aval
+            }¨awords  ⍝ check all items match the clues
+        }¨⍵
+    }
+    
     ∇ r←Clues
       r←' :'∘Segs¨#.U.ReadLines'input/2015/16_clues.txt'
     ∇
-
+    
     ∇ r←Data
       r←' :,'∘Segs¨#.U.ReadLines'input/2015/16.txt'
     ∇
-
+    
     ∇ TestAll
       'Silver Solution: ',⍕Clues Silver Data
       '  Gold Solution: ',⍕Clues Gold Data

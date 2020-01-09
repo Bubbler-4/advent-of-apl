@@ -1,43 +1,43 @@
 :Namespace Day01
-      Silver←{
-          ⍝ Map '(' to +1, ')' to -1 and sum.
-          +/('('=⍵)-')'=⍵
-      }
-
-      Gold←{
-          ⍝ Map '(' to +1, ')' to -1, cumulative sum,
-          ⍝ 1-based first index of negative number
-          ⎕IO←1
-          ¯1⍳⍨+\('('=⍵)-')'=⍵
-      }
-
-      SilverTest←{
-          f←⍺⍺
-          Assert←#.U.Assert
-          Assert 0≡f'(())':
-          Assert 0≡f'()()':
-          Assert 3≡f'(((':
-          Assert 3≡f'(()(()(':
-          Assert 3≡f'))(((((':
-          Assert ¯1≡f'())':
-          Assert ¯1≡f'))(':
-          Assert ¯3≡f')))':
-          Assert ¯3≡f')())())':
-          'All tests passed'
-      }
-
-      GoldTest←{
-          f←⍺⍺
-          Assert←#.U.Assert
-          Assert 1≡f,')':
-          Assert 5≡f'()())':
-          'All tests passed'
-      }
-
+    Silver←{
+        ⍝ Map '(' to +1, ')' to -1 and sum.
+        +/('('=⍵)-')'=⍵
+    }
+    
+    Gold←{
+        ⍝ Map '(' to +1, ')' to -1, cumulative sum,
+        ⍝ 1-based first index of negative number
+        ⎕IO←1
+        ¯1⍳⍨+\('('=⍵)-')'=⍵
+    }
+    
+    SilverTest←{
+        f←⍺⍺
+        Assert←#.U.Assert
+        Assert 0≡f'(())':
+        Assert 0≡f'()()':
+        Assert 3≡f'(((':
+        Assert 3≡f'(()(()(':
+        Assert 3≡f'))(((((':
+        Assert ¯1≡f'())':
+        Assert ¯1≡f'))(':
+        Assert ¯3≡f')))':
+        Assert ¯3≡f')())())':
+        'All tests passed'
+    }
+    
+    GoldTest←{
+        f←⍺⍺
+        Assert←#.U.Assert
+        Assert 1≡f,')':
+        Assert 5≡f'()())':
+        'All tests passed'
+    }
+    
     ∇ r←Data
       r←#.U.ReadFile'input/2015/1.txt'
     ∇
-
+    
     ∇ TestAll
       '    Silver Test: ',Silver SilverTest 0
       '      Gold Test: ',Gold GoldTest 0
