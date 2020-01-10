@@ -1,0 +1,63 @@
+:Namespace Day18
+    ⍝ For each 3x3 subgrids, check if 3 are on including or excluding self
+    GoL←{3∊-\⍵[2;2],⍨+/,⍵}⌺3 3
+    
+    Silver←{  ⍝ Run GoL ⍺ times and count ones
+        +/,GoL⍣⍺⊢'#'=⍵
+    }
+    
+    GoLStuck←{  ⍝ GoL but four corners are always on
+        (r c)←⍴⍵
+        1@(1 1)(1 c)(r 1)(r c) GoL ⍵
+    }
+    
+    Gold←{  ⍝ Run GoLStuck ⍺ times and count ones
+        (r c)←⍴⍵
+        +/,GoLStuck⍣⍺⊢1@(1 1)(1 c)(r 1)(r c)⊢'#'=⍵
+    }
+    
+    ExampleData1←↑(0 1 0 1 0 1)(0 0 0 1 1)(1 0 0 0 0 1)(0 0 1)(1 0 1 0 0 1)(1 1 1 1)
+    Ex1Step1←↑(0 0 1 1)(0 0 1 1 0 1)(0 0 0 1 1 0)⍬1(1 0 1 1)
+    Ex1Step2←↑(0 0 1 1 1 0)⍬(0 0 1 1 1)⍬(0 1)(0 1)
+    Ex1Step3←↑(0 0 0 1 0 0)⍬(0 0 0 1)(0 0 1 1)⍬⍬
+    Ex1Step4←↑⍬⍬(0 0 1 1 0 0)(0 0 1 1)⍬⍬
+    
+    GoLTest←{
+        f←⍺⍺
+        Assert←#.U.Assert
+        Assert Ex1Step1≡f ExampleData1:
+        Assert Ex1Step2≡f f ExampleData1:
+        Assert Ex1Step3≡f f f ExampleData1:
+        Assert Ex1Step4≡f f f f ExampleData1:
+        'All tests passed'
+    }
+    
+    ExampleData2←↑(1 1 0 1 0 1)(0 0 0 1 1)(1 0 0 0 0 1)(0 0 1)(1 0 1 0 0 1)(1 1 1 1 0 1)
+    Ex2Step1←↑(1 0 1 1 0 1)(1 1 1 1 0 1)(0 0 0 1 1)0(1 0 0 0 1)(1 0 1 1 1 1)
+    Ex2Step2←↑(1 0 0 1 0 1)(1 0 0 0 0 1)(0 1 0 1 1)(0 0 0 1 1)(0 1 0 0 1 1)(1 1 0 1 1 1)
+    Ex2Step3←↑(1 0 0 0 1 1)(1 1 1 1 0 1)(0 0 1 1 0 1)0(1 1)(1 1 1 1 0 1)
+    Ex2Step4←↑(1 0 1 1 1 1)(1 0 0 0 0 1)(0 0 0 1)(0 1 1)1(1 0 1 0 0 1)
+    Ex2Step5←↑(1 1 0 1 1 1)(0 1 1 0 0 1)(0 1 1)(0 1 1)(1 0 1)(1 1 0 0 0 1)
+    
+    GoLStuckTest←{
+        f←⍺⍺
+        Assert←#.U.Assert
+        Assert Ex2Step1≡f ExampleData2:
+        Assert Ex2Step2≡f f ExampleData2:
+        Assert Ex2Step3≡f f f ExampleData2:
+        Assert Ex2Step4≡f f f f ExampleData2:
+        Assert Ex2Step5≡f f f f f ExampleData2:
+        'All tests passed'
+    }
+    
+    ∇ r←Data
+      r←↑#.U.ReadLines'input/2015/18.txt'
+    ∇
+    
+    ∇ TestAll
+      '       GoL Test: ',GoL GoLTest 0
+      '  GoLStuck Test: ',GoLStuck GoLStuckTest 0
+      'Silver Solution: ',⍕100 Silver Data
+      '  Gold Solution: ',⍕100 Gold Data
+    ∇
+:EndNamespace
