@@ -1,0 +1,56 @@
+:Namespace Day20
+    DivisorSum←{  ⍝ sum of divisors of ⍵
+        bound←⌊⍵*.5
+        divs←⍸0=⍵|⍨⍳bound
+        (+/divs)+(+/⍵÷divs)-bound×⍵=×⍨bound
+    }
+    
+    Silver←{  ⍝ first number whose divisor sum is at least ⍵÷10
+        target←⌈⍵÷10
+        1+⍣(target≤∘DivisorSum⊣)1
+    }
+    
+    SilverFast←{  ⍝ assume the answer will be a multiple of 32
+        target←⌈⍵÷10
+        32+⍣(target≤∘DivisorSum⊣)32
+    }
+    
+    DivisorLimit←{  ⍝ sum of divisors of ⍵ which are at least ⍵÷⍺
+        +/⍵÷⍸0=⍵|⍨⍳⍺
+    }
+    
+    Gold←{  ⍝ first number whose limited sum of divisors is at least ⍵÷11
+        target←⌈⍵÷11
+        1+⍣(target≤⍺DivisorLimit⊣)1
+    }
+    
+    GoldFast←{  ⍝ assume the answer will be a multiple of 32
+        target←⌈⍵÷11
+        32+⍣(target≤⍺DivisorLimit⊣)32
+    }
+    
+    SilverTest←{
+        f←⍺⍺
+        Assert←#.U.Assert
+        Assert 4≡f 70:
+        Assert 8≡f 150:
+        'All tests passed'
+    }
+    
+    GoldTest←{
+        f←⍺⍺
+        Assert←#.U.Assert
+        Assert 4≡2 f 66:
+        Assert 12≡50 f 300:
+        'All tests passed'
+    }
+    
+    data←33100000
+    
+    ∇ TestAll
+      '    Silver Test: ',Silver SilverTest 0
+      '      Gold Test: ',Gold GoldTest 0
+      'Silver Solution: ',⍕SilverFast data
+      '  Gold Solution: ',⍕50 GoldFast data
+    ∇
+:EndNamespace
