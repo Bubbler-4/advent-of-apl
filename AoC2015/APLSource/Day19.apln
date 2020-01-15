@@ -1,0 +1,75 @@
+:Namespace Day19
+    Segs←#.U.Segs
+    
+    SubEach←{  ⍝ (from to) SubEach s → all possible one-subs
+        ⎕IO←0
+        (from to)←⍺
+        idx←⍸from⍷⍵  ⍝ Extract offsets
+        (↑,to,(≢from)↓↓)∘⍵¨idx  ⍝ Substitute the positions with to
+    }
+    
+    Silver←{  ⍝ recipes Silver molecule → count of possible one-subs
+        ≢∪⊃,/SubEach∘⍵¨⍺
+    }
+    
+    Gold←{  ⍝ recipes Gold molecule → min.steps needed to construct the molecule 
+        recipes←⌽¨⍺  ⍝ flip the recipes backwards
+        {
+            ⍵≡,'e':0  ⍝ base case reached
+            subs←∪⊃,/SubEach∘⍵¨recipes  ⍝ generate possible one-subs
+            subs←subs/⍨{('e'∊⍵)≤⍵≡,'e'}¨subs  ⍝ only allow single 'e' or results without 'e'
+            0=≢subs:1e9  ⍝ no subs possible
+            ⍝⎕←subs
+            1+⌊/∇¨subs
+        }⍵
+    }
+    
+    ⍝ The input has a special property to exploit:
+    ⍝ Every replacement changes one active atom into two active atoms,
+    ⍝ plus some inert atoms (Rn and Ar) and optional extra (active+Y) pairs.
+    ⍝ C counts as active even though it doesn't have replacements.
+    ⍝ The initial electron e also counts as an active atom.
+    ⍝ If the result has A active atoms, I inert atoms and Y Y's,
+    ⍝ it takes (A-Y-1) steps, which is (all atoms)-I-2Y-1.
+    Gold2←{  ⍝ {recipes} Gold2 molecule → min.steps
+        atoms←1⊥⍵∊⎕A
+        inerts←1⊥1⊥¨⍷∘⍵¨'Rn' 'Ar'
+        ys←1⊥⍵='Y'
+        atoms-1+inerts+2×ys
+    }
+    
+    recipe1←((,'H')'HO')((,'H')'OH')((,'O')'HH')
+    recipe2←recipe1,((,'e')(,'H'))((,'e')(,'O'))
+    molecule1←'HOH'
+    molecule2←'HOHOHO'
+    
+    SilverTest←{
+        f←⍺⍺
+        Assert←#.U.Assert
+        Assert 4≡recipe1 f molecule1:
+        Assert 7≡recipe1 f molecule2:
+        'All tests passed'
+    }
+    
+    GoldTest←{
+        f←⍺⍺
+        Assert←#.U.Assert
+        Assert 3≡recipe2 f molecule1:
+        Assert 6≡recipe2 f molecule2:
+        'All tests passed'
+    }
+    
+    ∇ r←Data;lines;recipes;molecule
+      lines←#.U.ReadLines'input/2015/19.txt'
+      (recipes molecule)←(' =>'∘Segs¨ ¯2↓lines)(⊃⌽lines)
+      r←⎕NS'recipes' 'molecule'
+    ∇
+    
+    ∇ TestAll;recipes;molecule
+      '    Silver Test: ',Silver SilverTest 0
+      '      Gold Test: ',Gold GoldTest 0
+      (recipes molecule)←Data.(recipes molecule)
+      'Silver Solution: ',⍕recipes Silver molecule
+      '  Gold Solution: ',⍕recipes Gold2 molecule
+    ∇
+:EndNamespace
