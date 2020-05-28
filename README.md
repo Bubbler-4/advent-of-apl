@@ -29,7 +29,7 @@ Also, any suggestions to improve the solutions (regarding performance, style, wh
 | **06~10** | [☆][15D06S] [★][15D06G] | [Circuit][15D07] [☆][15D07S] [★][15D07G] | [☆][15D08S] [★][15D08G] | [DistanceSums][15D09] [☆][15D09S] [★][15D09G] | [LookSay][15D10] [☆][15D10S] [★][15D10G] |
 | **11~15** | Skip | [☆][15D12S] [★][15D12G] | [HappyTable][15D13] [☆][15D13S] [★][15D13G] | [Distance][15D14S1] [☆][15D14S] <br> [Movements][15D14G1] [★][15D14G] | [Partitions][15D15] [☆][15D15S] [★][15D15G] |
 | **16~20** | [☆][15D16S] [★][15D16G] | [☆][15D17S] [★][15D17G] | [GoL][15D18S1] [☆][15D18S] <br> [GoLStuck][15D18G1] [★][15D18G] | [SubEach][15D19S1] [☆][15D19S] <br> [★][15D19G1] [★P][15D19G] | [DivisorSum][15D20S1] [☆][15D20S] [☆P][15D20S2] <br> [DivisorLimit][15D20G1] [★][15D20G] [★P][15D20G2] |
-| **21~25** | [Fight][15D21S1] [☆][15D21S] [★][15D21G] |   | [RunPgm][15D23S1] [☆][15D23S] [★][15D23G] |   |   |
+| **21~25** | [Fight][15D21S1] [☆][15D21S] [★][15D21G] |   | [RunPgm][15D23S1] [☆][15D23S] [★][15D23G] | [Solve][15D24S1] [☆P][15D24S] [★P][15D24G] |   |
 
 [15D01S]: AoC2015/APLSource/Day01.apln#L2
 [15D01G]: AoC2015/APLSource/Day01.apln#L7
@@ -92,6 +92,9 @@ Also, any suggestions to improve the solutions (regarding performance, style, wh
 [15D23S1]: AoC2015/APLSource/Day23.apln#L14
 [15D23S]: AoC2015/APLSource/Day23.apln#L20
 [15D23G]: AoC2015/APLSource/Day23.apln#L24
+[15D24S1]: AoC2015/APLSource/Day24.apln#L4
+[15D24S]: AoC2015/APLSource/Day24.apln#L16
+[15D24G]: AoC2015/APLSource/Day24.apln#L18
 
 ### AoC 2016
 
