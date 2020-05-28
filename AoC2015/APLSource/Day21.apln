@@ -1,0 +1,52 @@
+:Namespace Day21
+    ⍝ 3-column arrays of (cost atk def)
+    weapons ← ⍉↑(8 10 25 40 74)(4 5 6 7 8)0
+    armor ← ⍉↑(13 31 53 75 102)0(1 2 3 4 5)
+    rings ← ⍉↑(25 50 100 20 40 80)(1 2 3)(0 0 0 1 2 3)
+    
+    Fight←{ ⍝ playerWins←player Fight enemy
+        ⍝ Given player/enemy stats as (hp atk def), 1 if player wins
+        (hp atk def) ← ⍺,¨⍵
+        ≥/⌈hp÷1⌈⌽atk-⌽def
+    }
+    
+    Combs←{ ⍝ combs←Combs (weapons armor rings)
+        ⍝ All possible combinations of 1 weapon, 0-1 armor, 0-2 rings
+        (weapons armor rings)←⍵
+        rings ⍪← ⍉⍪⍉ (¯1+⍳≢rings)↑⍤0 2 +⍤1⍤2 1⍨ rings
+        costs ← weapons
+        costs ⍪← ⍉⍪⍉ costs +⍤1⍤2 1⊢ armor
+        costs ⍪← ⍉⍪⍉ costs +⍤1⍤2 1⊢ rings
+        costs
+    }
+    
+    Silver←{ ⍝ minCost←Silver boss
+        ⍝ Minimum cost to win over the boss (hp atk def)
+        costs ← Combs weapons armor rings
+        stats ← 100,1↓⍤1⊢costs  ⍝ Player hp is 100
+        ⌊/⊣/ costs⌿⍨ stats Fight⍤1⊢ ⍵
+    }
+    
+    Gold←{ ⍝ maxCost←Gold boss
+        ⍝ Maximum cost to lose over the boss (hp atk def)
+        costs ← Combs weapons armor rings
+        stats ← 100,1↓⍤1⊢costs  ⍝ Player hp is 100
+        ⌈/⊣/ costs⌿⍨ ~ stats Fight⍤1⊢ ⍵
+    }
+    
+    FightTest←{
+        f←⍺⍺
+        Assert←#.U.Assert
+        Assert 1≡8 5 5 f 12 7 2:
+        Assert 1≡12 7 2 f 8 5 5:
+        'All tests passed'
+    }
+    
+    data ← 100 8 2
+    
+    ∇ TestAll
+      '     Fight Test: ',Fight FightTest 0
+      'Silver Solution: ',⍕Silver data
+      '  Gold Solution: ',⍕Gold data
+    ∇
+:EndNamespace

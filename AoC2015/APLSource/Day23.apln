@@ -1,0 +1,45 @@
+:Namespace Day23
+    RunInstr←{ ⍝ (pc a b)←(pc a b) RunInstr cmd
+        (pc a b) ← ⍺
+        (cmd u v) ← 3↑⍵
+        'hlf'≡cmd: (pc+1) a b⊣⍎u,'←⌊',u,'÷2'
+        'tpl'≡cmd: (pc+1) a b⊣⍎u,'×←3'
+        'inc'≡cmd: (pc+1) a b⊣⍎u,'+←1'
+        'jmp'≡cmd: (pc+⍎u) a b
+        'jie'≡cmd: (pc+(⍎v)*0=2|⍎u) a b
+        'jio'≡cmd: (pc+(⍎v)*1=⍎u) a b
+        ⍺
+    }
+
+    RunPgm←{ ⍝ (a b)←{pc a b} RunPgm pgm
+        ⍺ ← 1 0 0
+        pgm ← ', '∘#.U.Segs¨ ⍵
+        1↓ {3::⍵ ⋄ ⍵ RunInstr (⊃⍵)⊃pgm}⍣≡ ⍺
+    }
+
+    Silver←{ ⍝ Run with default starting point
+        2⊃ RunPgm ⍵
+    }
+
+    Gold←{ ⍝ Run with a = 1
+        2⊃ 1 1 0 RunPgm ⍵
+    }
+
+    ∇ r←data
+      r←#.U.ReadLines 'input/2015/23.txt'
+    ∇
+
+    RunPgmTest←{
+        f←⍺⍺
+        Assert←#.U.Assert
+        Assert 2 0 ≡ f 'inc a' 'jio a, +2' 'tpl a' 'inc a':
+        Assert 7 0 ≡ 1 1 0 f 'inc a' 'jio a, +2' 'tpl a' 'inc a':
+        'All tests passed'
+    }
+    
+    ∇ TestAll
+      '    RunPgm Test: ',RunPgm RunPgmTest 0
+      'Silver Solution: ',⍕Silver data
+      '  Gold Solution: ',⍕Gold data
+    ∇
+:EndNamespace
